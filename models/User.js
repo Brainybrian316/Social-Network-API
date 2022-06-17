@@ -32,3 +32,7 @@ const UserSchema = new Schema({
         // prevent virtual from creating dublicate of _id as 'id'
         id: false
     });
+
+    const User = model('User', UserSchema);
+
+    module.exports = User;
