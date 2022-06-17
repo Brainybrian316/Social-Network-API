@@ -12,11 +12,11 @@ const UserSchema = new Schema({
         required: true,
         unique: true,
         validate: {
-            validator: function(v) {
+            validator: function (v) {
                 return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
             }
-    }
-},
+        }
+    },
     thoughts: [{
         type: Schema.Types.ObjectId,
         ref: 'Thought'
@@ -25,18 +25,19 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-        toJSON: {
-            virtuals: true,
-            getters: true
-        },
-        // prevent virtual from creating dublicate of _id as 'id'
-        id: false
-    });
+}, {
+    toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    // prevent virtual from creating dublicate of _id as 'id'
+    id: false
+});
 
-    UserSchema.virtual('friendCount').get(function() {
-        return this.friends.length;
-    })
+UserSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+})
 
-    const User = model('User', UserSchema);
+const User = model('User', UserSchema);
 
-    module.exports = User;
+module.exports = User;
