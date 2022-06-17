@@ -8,7 +8,7 @@ const thoughtController = {
             return User.findOneAndUpdate(
                 { _id: params.userId},
                 { $push: { thoughts: _id } },
-                { new: true }
+                { new: true, runValidators: true }
             );
         })
         .then(dbUserData => {
@@ -46,9 +46,25 @@ const thoughtController = {
             console.log(err);
             res.status(500).json(err);
         })
-    }
+    },
 
-    }
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id! in update route' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+    });
+
+}
+}   
+
 
     module.exports = thoughtController;
 

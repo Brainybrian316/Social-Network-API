@@ -17,10 +17,8 @@ const userController = {
         .populate({
             path: 'thoughts',
             select: '-__v',
-            select: '-_id',
         })
         .select('-__v')
-        .select('-_id')
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -33,10 +31,8 @@ const userController = {
         .populate({
             path: 'thoughts',
             select: '-__v',
-            select: '-_id',
         })
         .select('-__v')
-        .select('-_id')
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id! in get user by id route' });
