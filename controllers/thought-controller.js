@@ -70,7 +70,18 @@ const thoughtController = {
                 res.status(404).json({ message: 'No thought found with this id! in delete route' });
                 return;
             }
-            res.json(dbThoughtData);
+            return User.findOneAndUpdate(
+                { thoughts: params.id },
+                { $pull: { thoughts: params.id} },
+                { new: true }
+            )
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'thought deleted, but no user associated with this thought in delete thought route' });
+                    return;
+                }
+                res.json(dbUserData);
+            })
         })
         .catch(err => {
             console.log(err);
