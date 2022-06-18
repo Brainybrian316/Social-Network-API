@@ -19,7 +19,7 @@ router.route('/:id').delete(deleteThought);
 //  get reactions for thoughts  /api/thoughts/:thoughtId/reactions
 router.route('/:thoughtId/reactions').post(createReaction);
 
-// // delete reaction for thoughts  /api/thoughts/:thoughtId/reactions/:reactionId
-// router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
+// delete reaction for thoughts  /api/thoughts/:thoughtId/reactions/:reactionId
+router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
 
 module.exports = router;
