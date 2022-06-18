@@ -76,6 +76,25 @@ const thoughtController = {
             console.log(err);
             res.status(500).json(err);
         })
+    },
+
+    createReaction({ params, body }, res) {
+        Thought.findOneAndUpdate(
+            { _id: params.thoughtId },
+            { $addToSet: { reactions: body } },
+            { new: true }
+        )
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id! in create reaction route' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
     }
 }   
 
