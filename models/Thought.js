@@ -19,11 +19,11 @@
 			required: true,
 		},
 		createdAt: {
-      // mongoose types of date
+			// mongoose types of date
 			type: Date,
-      // sets the default value to the current date 
+			// sets the default value to the current date 
 			default: Date.now,
-      // get is a mongoose virtual, this one is set to format the date
+			// get is a mongoose virtual, this one is set to format the date
 			get: createdAtVal => dateFormat(createdAtVal)
 		},
 	}, {
@@ -39,9 +39,9 @@
 		thoughtText: {
 			type: String,
 			required: true,
-      // min is a mongoose validator to define constraints
+			// min is a mongoose validator to define constraints
 			min: 1,
-      // max is a mongoose validator to define constraints
+			// max is a mongoose validator to define constraints
 			max: 280
 		},
 		createdAt: {
