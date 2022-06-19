@@ -13,7 +13,7 @@
   </a>
 </p>
 
-> A backend application that allows users to create, read, update, and delete their own social network accounts. The idea is a social network application where users can share their thoguths, react to friends thougths, and create a friends list. The application is designed to be a RESTful API. utilizing the following technologies: Express, Node, MongoDB, and Mongoose. The application follows the following design principles:  CRUD, ORM, and REST. 
+> A backend application that allows users to create, read, update, and delete their own social network accounts. The idea is a social network application where users can share their thoguths, react to friends thougths, and create a friends list. The application is designed to be a RESTful API. utilizing the following technologies: Express, Node, MongoDB, and Mongoose. The application follows the following design principles:  CRUD, ODM, and REST. 
 
 ***
 ## Demo of Project 
